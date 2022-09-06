@@ -1,0 +1,57 @@
+//EDIT THESE:
+$page-bg-color: #dedede; //Page background color;
+$bg-color: #2196f3; //Pointers background color;
+$txt-color: #ffffff;
+$pixel-base: 17px; //Define 'em';
+
+//LEAVE THESE ALONE:
+$base-dist: 0.25em;
+$b-y: calc(#{$base-dist}* 8) solid transparent;
+$b-lb: calc(#{$base-dist}* 5) solid $bg-color;
+$b-la: calc(#{$base-dist}* 5) solid $page-bg-color;
+@mixin dist($property, $multiplier) {
+  #{$property}: calc(#{$base-dist}*#{$multiplier});
+}
+
+body {
+  background-color: $page-bg-color;
+}
+.pointer {
+  display: inline-block;
+  font-size: $pixel-base;
+  @include dist(padding-left, 5);
+  @include dist(padding-right, 5);
+  @include dist(padding-top, 0.8);
+  @include dist(padding-bottom, 2.55);
+  @include dist(height, 12);
+  position: relative;
+  background: $bg-color;
+  //@include dist(margin, 3);
+  @include dist(max-width, 32);
+  @include dist(min-width, 12);
+  clip-path: polygon(
+    calc(#{$base-dist}* 39 * 0.85) 0,
+    calc(#{$base-dist}* 42) 50%,
+    calc(#{$base-dist}* 38 * 0.85) 100%,
+    0% 100%,
+    calc(#{$base-dist}* 30 * 0.2) 50%,
+    0% 0%
+  );
+  .text-content {
+    display: inline-block;
+    position: relative;
+    top: calc(#{$base-dist}* -1.5);
+    left: calc(#{$base-dist}* 2.5);
+    min-width: calc(#{$base-dist}* 28);
+    min-height: calc(#{$base-dist}*);
+    margin-right: calc(#{$base-dist}* 8);
+    vertical-align: middle;
+    color: $txt-color;
+
+    p {
+      text-align: center;
+      font-size: 25px;
+      // color:black;
+    }
+  }
+}
